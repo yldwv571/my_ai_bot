@@ -12,9 +12,9 @@ from PIL import Image
 TELEGRAM_TOKEN = os.environ.get("BOT_TOKEN", "8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LoRoJR1NUtG5F0H7Wr2w2Tmc5m3T1KzwNwLj8T_TDEtw")
 
-bot = Bot(token=8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ)
+bot = Bot(token=)
 dp = Dispatcher()
-ai_client = genai.Client(api_key=AQ.Ab8RN6LoRoJR1NUtG5F0H7Wr2w2Tmc5m3T1KzwNwLj8T_TDEtw)
+ai_client = genai.Client(api_key=)
 
 user_chats = {}
 
