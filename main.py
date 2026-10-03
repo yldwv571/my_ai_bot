@@ -7,13 +7,14 @@ from google import genai
 from google.genai import types as genai_types
 from PIL import Image
 
-# API kalitlarni serverdan yoki o'zgaruvchidan olish
-TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6J9_G4j0S4gyxgDy2vXy-cxeSjrNkhlPHW28baFy_x1Ag")
+# API kalitlarni Railway o'zgaruvchilaridan olamiz
+# E'tibor bering: Railway'da BOT_TOKEN deb kiritgansiz
+TELEGRAM_TOKEN = os.environ.get("BOT_TOKEN", "8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LoRoJR1NUtG5F0H7Wr2w2Tmc5m3T1KzwNwLj8T_TDEtw")
 
-bot = Bot(token=TELEGRAM_TOKEN)
+bot = Bot(token=8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ)
 dp = Dispatcher()
-ai_client = genai.Client(api_key=GEMINI_API_KEY)
+ai_client = genai.Client(api_key=AQ.Ab8RN6LoRoJR1NUtG5F0H7Wr2w2Tmc5m3T1KzwNwLj8T_TDEtw)
 
 user_chats = {}
 
@@ -26,7 +27,7 @@ SYSTEM_INSTRUCTION = (
 def get_or_create_chat(user_id: int):
     if user_id not in user_chats:
         user_chats[user_id] = ai_client.chats.create(
-            model="gemini-2.5-flash",
+            model="gemini-1.5-flash",
             config=genai_types.GenerateContentConfig(
                 system_instruction=SYSTEM_INSTRUCTION
             )
@@ -37,7 +38,7 @@ def get_or_create_chat(user_id: int):
 async def start_handler(message: types.Message):
     user_id = message.from_user.id
     user_chats[user_id] = ai_client.chats.create(
-        model="gemini-2.5-flash",
+        model="gemini-1.5-flash",
         config=genai_types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION
         )
@@ -65,10 +66,10 @@ async def photo_handler(message: types.Message):
         downloaded_file = await bot.download_file(file_info.file_path)
         image = Image.open(io.BytesIO(downloaded_file.read()))
         
-        prompt = message.caption if message.caption else "Bu rasimda nima tasvirlangan? Batafsil tushuntirib ber."
+        prompt = message.caption if message.caption else "Bu rasmda nima tasvirlangan? Batafsil tushuntirib ber."
         
         response = ai_client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-1.5-flash",
             contents=[image, prompt],
             config=genai_types.GenerateContentConfig(
                 system_instruction=SYSTEM_INSTRUCTION
