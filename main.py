@@ -8,7 +8,7 @@ from google.genai import types as genai_types
 from PIL import Image
 
 # API kalitlarni Railway o'zgaruvchilaridan olamiz
-TELEGRAM_TOKEN = os.environ.get("BOT_TOKEN", "8790403365:AAHJNDNe5bBl_sG2aPeJozY8IEBTY4BIZpQ")
+TELEGRAM_TOKEN = os.environ.get("BOT_TOKEN", "8790403365:AAGVGCz2262wvMXgYkXJzIFI7ct_2iJD_mU")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LoRoJR1NUtG5F0H7Wr2w2Tmc5m3T1KzwNwLj8T_TDEtw")
 
 # Xatolik to'g'irlandi: Token va kalitlar o'rniga o'zgaruvchilar uzatildi
